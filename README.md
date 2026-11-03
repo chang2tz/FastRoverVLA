@@ -12,7 +12,7 @@
 ![Training free](https://img.shields.io/badge/Training-free-6b7e57)
 ![License MIT](https://img.shields.io/badge/License-MIT-8c9274)
 
-Changtao Zhao · Yingxue Guan · Li Wang · Ziying Song  
+Changtao Zhao · Yingxue Guan · Li Wang · Ziying Song<br>
 Shijie Zhao · Yuhang Zhang · Shengkai Zhang · Qing Wang
 
 </div>
