@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#244e3a">
+  <meta name="description" content="FastRoverVLA decouples visual plan generation from state-consistent recurrent execution for off-road autonomous driving. Code, numerical replay, and research results.">
+  <meta property="og:title" content="FastRoverVLA — Plan less. Stay in sync.">
+  <meta property="og:description" content="Training-free recurrent execution for off-road vision-language-action planning.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chang2tz.github.io/FastRoverVLA/">
+  <meta property="og:image" content="https://chang2tz.github.io/FastRoverVLA/assets/hero-rellis.webp">
+  <title>FastRoverVLA · State-Consistent Off-Road Execution</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="wordmark" href="#top" aria-label="FastRoverVLA home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26 12 6h8l6 20M10 18h12M16 6v20"/></svg>FastRover<span>VLA</span></a>
+  <nav aria-label="Main navigation"><a href="#method">Method</a><a href="#explore">Explore</a><a href="#results">Results</a><a href="#release">Code</a></nav>
+  <a class="header-github" href="https://github.com/chang2tz/FastRoverVLA" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+</header>
+<main id="main">
+  <section class="hero section-width" id="top">
+    <p class="eyebrow"><span class="status-dot"></span> OFF-ROAD VISION · LANGUAGE · ACTION</p>
+    <h1>FastRover<span>VLA</span></h1>
+    <p class="hero-line">Plan less. <em>Stay in sync.</em></p>
+    <p class="paper-title">Fast Vision-Language-Action Execution<br class="desktop-break"> for Off-Road Autonomous Driving</p>
+    <p class="authors"><a href="https://github.com/chang2tz">Changtao Zhao</a>, Yingxue Guan, Li Wang, Ziying Song,<br class="desktop-break"> Shijie Zhao, Yuhang Zhang, Shengkai Zhang, Qing Wang</p>
+    <div class="hero-actions"><a class="button primary" href="https://github.com/chang2tz/FastRoverVLA" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18"/></svg>Code</a><a class="button" href="#explore">Explore the replay <span aria-hidden="true">↓</span></a><a class="button" href="#citation">Cite</a></div>
+    <p class="publication-status">Research manuscript · Public paper link forthcoming</p>
+    <figure class="terrain-hero"><img src="assets/hero-rellis.webp" alt="Narrow off-road trail surrounded by dense vegetation in RELLIS-3D" width="1920" height="1200" fetchpriority="high"><div class="terrain-shade"></div><div class="terrain-caption"><span>BEYOND THE PAVED ROAD</span><strong>A changing state.<br>A plan that keeps up.</strong><p>RELLIS-3D · Recorded terrain imagery</p></div><div class="terrain-index" aria-hidden="true">01 / RECURRENT EXECUTION</div></figure>
+    <div class="principles"><span>Training-free</span><span>Frozen backbones</span><span>Persistent correction</span><span>Bounded refresh</span></div>
+  </section>
+
+  <section class="intro section-width section-space" aria-labelledby="intro-title">
+    <div class="section-heading"><p class="eyebrow">THE IDEA</p><h2 id="intro-title">A new state does not always<br>need a new visual plan.</h2></div>
+    <div class="intro-body"><p>Multimodal inference is expensive. Vehicle motion keeps changing between predictions. Simply holding a decoded plan leaves its commands tied to an earlier state.</p><p><strong>FastRoverVLA maintains the plan as execution state.</strong> It aligns decoded speed–curvature actions with measured motion, integrates a local trajectory, and writes the corrected remainder back for the next update. A bounded rule decides when to request a new visual plan.</p><a class="text-link" href="https://github.com/chang2tz/FastRoverVLA/blob/main/docs/method.md">Read the method specification <span aria-hidden="true">↗</span></a></div>
+  </section>
+
+  <section class="highlight-band" aria-label="Primary frozen-replay results">
+    <div class="section-width highlight-inner"><div class="band-label"><span class="eyebrow">CONTROLLED REPLAY</span><h3>Fewer plan refreshes.<br>Lower trajectory error.</h3><p>Qwen3-VL-2B · 3 s horizon</p></div><div class="stat"><strong>18.2<span>%</span></strong><span>lower FDE on ORAD-3D</span><small>0.726 → 0.593 m</small></div><div class="stat"><strong>35.8<span>%</span></strong><span>lower FDE on RELLIS-3D</span><small>0.820 → 0.526 m</small></div><div class="stat"><strong>4.8<span>%</span></strong><span>RELLIS plan-refresh rate</span><small>31 admissions / 650 updates</small></div></div>
+  </section>
+
+  <section class="section-width section-space" id="method" aria-labelledby="method-title">
+    <div class="section-heading heading-row"><div><p class="eyebrow">01 / METHOD</p><h2 id="method-title">Keep the correction.<br>Carry the plan forward.</h2></div><p class="heading-note">An execution interface after action decoding.<br>No backbone features. No additional learned policy.</p></div>
+    <figure class="paper-figure"><button class="zoom-trigger" data-image="assets/method.png" data-caption="FastRoverVLA framework from the research manuscript." aria-label="Enlarge the FastRoverVLA framework"><img src="assets/method.webp" alt="FastRoverVLA framework showing frozen visual plan generation, a persistent action buffer, state alignment, bounded refresh and waypoint integration" loading="lazy" width="2400" height="1000"><span class="zoom-label">View full figure ↗</span></button><figcaption>Frozen visual planning supplies the decoded actions. Recurrent execution maintains their consistency with measured motion; evaluation uses logged states and output waypoints.</figcaption></figure>
+    <div class="method-steps"><article><span class="step-number">01</span><h3>Decode &amp; initialize</h3><p>A frozen VLA supplies speed–curvature actions. Complete the horizon and blend the fresh plan with measured motion.</p></article><article><span class="step-number">02</span><h3>Align &amp; integrate</h3><p>Correct actions against the current state at every update, apply the speed bound, and integrate a 3 s trajectory.</p></article><article><span class="step-number">03</span><h3>Consume &amp; write back</h3><p>Consume the first action. Retain the corrected remainder so that subsequent updates inherit the correction.</p></article></div>
+    <div class="refresh-explanation"><div><p class="eyebrow">A BOUNDED REUSE BUDGET</p><h3>Refresh according<br>to plan variation.</h3><p>Normalize speed and curvature variation within the decoded plan. Higher roughness selects a shorter reuse budget; lower roughness selects a longer one.</p><p class="subtle">A budget K permits K reuse updates.<br>The complete refresh interval is K + 1.</p></div><button class="zoom-trigger refresh-image" data-image="assets/refresh.png" data-caption="Validation-calibrated plan variation determines the bounded reuse budget." aria-label="Enlarge bounded refresh diagram"><img src="assets/refresh.webp" loading="lazy" alt="Speed and curvature roughness combine into a score that selects a short or long reuse budget" width="1200" height="850"></button></div>
+  </section>
+
+  <section class="explorer-section" id="explore" aria-labelledby="explore-title">
+    <div class="section-width section-space"><div class="section-heading heading-row"><div><p class="eyebrow">02 / EXPLORE THE REPLAY</p><h2 id="explore-title">Watch the plan evolve.</h2></div><p class="heading-note">Recorded motion. Frozen predictions.<br>Actual numerical outputs from the released CPU replay.</p></div>
+      <div class="explorer-toolbar"><div class="dataset-switch" role="group" aria-label="Select replay dataset"><button class="dataset-button active" data-dataset="orad" aria-pressed="true">ORAD-3D</button><button class="dataset-button" data-dataset="rellis" aria-pressed="false">RELLIS-3D</button></div><label class="scene-control">Sequence <select id="scene-select" aria-label="Replay sequence"><option>Loading…</option></select></label><span class="replay-label"><span class="status-dot"></span> FROZEN REPLAY</span></div>
+      <div class="replay-grid"><div class="trajectory-view"><svg id="trajectory" viewBox="0 0 720 430" role="img" aria-labelledby="trajectory-title trajectory-description"><title id="trajectory-title">Local trajectory comparison</title><desc id="trajectory-description">Ground truth, recurrent correction and a control with identical refresh processing but no correction during reuse.</desc><text x="360" y="215" text-anchor="middle">Loading replay data…</text></svg><div class="plot-legend"><span><i class="legend-line gt"></i>Recorded target</span><span><i class="legend-line full"></i>FastRoverVLA</span><span><i class="legend-line stale"></i>No reuse correction</span></div></div><aside class="replay-details"><p class="eyebrow">CURRENT WINDOW</p><p class="frame-label" id="frame-label">Loading…</p><span class="refresh-chip" id="refresh-state">—</span><div class="detail-row"><span>Measured speed</span><strong id="observed-speed">—</strong></div><div class="detail-row"><span>Plan reuse age</span><strong id="reuse-age">—</strong></div><div class="error-comparison"><span>3 s final displacement error</span><div><i class="small-dot green"></i>FastRoverVLA<strong id="full-fde">—</strong></div><div><i class="small-dot red"></i>No reuse correction<strong id="stale-fde">—</strong></div></div><p class="subtle">The two methods share the same refresh times and identical refresh-time processing. Subsequent states come from the log.</p></aside></div>
+      <div class="timeline"><button id="play-button" class="play-button" aria-label="Play numerical replay" disabled>▶</button><label for="frame-slider" class="sr-only">Replay window</label><input id="frame-slider" type="range" min="0" max="1" value="0" disabled><output id="frame-counter" for="frame-slider">— / —</output></div>
+      <p class="figure-note">The plot shows local trajectories in metres, with forward distance on the horizontal axis. This is open-loop numerical replay, not a vehicle simulation. <a href="https://github.com/chang2tz/FastRoverVLA/blob/main/docs/evaluation.md">Protocol and reference-frame details ↗</a></p>
+      <p id="replay-error" class="error-message" role="status" hidden></p>
+    </div>
+  </section>
+
+  <section class="section-width section-space" id="results" aria-labelledby="results-title">
+    <div class="section-heading heading-row"><div><p class="eyebrow">03 / RESULTS</p><h2 id="results-title">Evaluate execution,<br>with the planner held fixed.</h2></div><p class="heading-note">Primary numerical replay · Qwen3-VL-2B<br>1,286 windows across two datasets</p></div>
+    <div class="result-tabs" role="group" aria-label="Result protocol"><button class="result-tab active" data-table="frozen" aria-pressed="true">Frozen prediction replay</button><button class="result-tab" data-table="requests" aria-pressed="false">Independent actual requests</button></div>
+    <div class="table-scroll"><table id="results-table"><caption class="sr-only">Qwen3-VL-2B trajectory accuracy and refresh demand</caption><thead><tr><th rowspan="2" scope="col">Execution</th><th colspan="3" scope="colgroup">ORAD-3D</th><th colspan="3" scope="colgroup">RELLIS-3D</th></tr><tr><th scope="col">ADE ↓ <small>m</small></th><th scope="col">FDE ↓ <small>m</small></th><th scope="col" class="rate-label">Refresh ↓ <small>%</small></th><th scope="col">ADE ↓ <small>m</small></th><th scope="col">FDE ↓ <small>m</small></th><th scope="col" class="rate-label">Refresh ↓ <small>%</small></th></tr></thead><tbody id="results-body"><tr><th scope="row">Every update</th><td>0.384</td><td>0.726</td><td>100.0</td><td>0.387</td><td>0.820</td><td>100.0</td></tr><tr><th scope="row">Fixed interval</th><td>0.330</td><td>0.599</td><td>8.2</td><td>0.289</td><td>0.584</td><td>11.4</td></tr><tr class="our-row"><th scope="row">FastRoverVLA</th><td>0.327</td><td>0.593</td><td>5.8</td><td>0.266</td><td>0.526</td><td>4.8</td></tr></tbody></table></div>
+    <p id="table-note" class="figure-note">Shared frozen predictions; refresh counts are plan admissions, with zero model requests during replay. Primary archived scoring convention; see the separate past-only-heading check in the repository.</p>
+    <div class="actual-cost"><div><p class="eyebrow">INDEPENDENT SERIAL REQUEST RUNS</p><h3>Less request-processing work<br>per logged update.</h3></div><div class="cost-stat"><strong>16.6×</strong><p>ORAD · 355.4 → 21.4 ms/update</p></div><div class="cost-stat"><strong>20.8×</strong><p>RELLIS · 443.9 → 21.3 ms/update</p></div></div><p class="figure-note">Qwen3 request-wrapper measurements from the original GPU runs. These are processing-cost ratios, separate from the frozen replay above; they do not measure asynchronous speedup or complete vehicle latency.</p>
+    <figure class="paper-figure results-figure"><button class="zoom-trigger" data-image="assets/results_overview.png" data-caption="Matched error distributions and state-correction analysis from the manuscript." aria-label="Enlarge error distributions and matched-refresh comparison"><img src="assets/results_overview.webp" alt="ORAD and RELLIS error distributions, and a matched-refresh comparison of full recurrent correction against no correction during reuse" loading="lazy" width="2200" height="1400"><span class="zoom-label">Inspect distributions ↗</span></button><figcaption>Matched refresh-time processing isolates what continued state correction contributes during reuse. The plotted quantity is future 3 s FDE.</figcaption></figure>
+    <div class="reading-results"><h3>What drives the improvement?</h3><p>Persistent state correction is the main source of the observed accuracy benefit. A motion-only recurrent control is competitive, and equal-budget uniform refresh is close to the plan-conditioned rule. The release includes these controls so that the execution effect can be examined directly.</p><a class="text-link" href="https://github.com/chang2tz/FastRoverVLA/blob/main/docs/reproduction.md">Reproduce the controls ↗</a></div>
+  </section>
+
+  <section class="qualitative-section"><div class="section-width section-space"><div class="section-heading"><p class="eyebrow">04 / QUALITATIVE RESULTS</p><h2>From recorded scenes<br>to local trajectories.</h2><p class="section-description">Camera projections and bird’s-eye views from the paper, using paired recorded scenes and trajectory outputs.</p></div><figure class="paper-figure"><button class="zoom-trigger" data-image="assets/qualitative_execution.png" data-caption="Recorded-scene trajectory visualizations from the FastRoverVLA manuscript." aria-label="Enlarge qualitative trajectory results"><img src="assets/qualitative_execution.webp" alt="Paired camera and bird's-eye trajectory comparisons on ORAD-3D and RELLIS-3D scenes" loading="lazy" width="2400" height="1300"><span class="zoom-label">View full resolution ↗</span></button><figcaption>Qualitative overlays are from the archived evaluation. They visualize stored transformations and predictions; closed-loop driving is outside this experiment.</figcaption></figure></div></section>
+
+  <section class="section-width section-space" id="release" aria-labelledby="release-title"><div class="release-grid"><div><p class="eyebrow">05 / OPEN SOURCE</p><h2 id="release-title">Start with the method.<br>Reproduce it on a CPU.</h2><p class="section-description">A small execution core, full-precision configurations, released numerical traces, and direct checks against the archived outputs.</p><ul class="release-list"><li>Model-agnostic Python interface</li><li>1,286 numerical replay windows</li><li>Primary replay and nine execution controls</li><li>Trajectory and refresh-schedule verification</li></ul><a class="button primary" href="https://github.com/chang2tz/FastRoverVLA" target="_blank" rel="noopener noreferrer">Get the code <span aria-hidden="true">↗</span></a></div><div class="code-panel"><div class="code-top"><span>QUICK START</span><button class="copy-button" data-copy="install-code" aria-label="Copy installation commands">Copy</button></div><pre><code id="install-code">git clone https://github.com/chang2tz/FastRoverVLA.git
+cd FastRoverVLA
+python -m pip install --no-deps -e .
+
+# Recompute and verify the numerical release
+python scripts/reproduce.py --verify</code></pre><div class="code-footer"><span class="status-dot"></span> Python 3.10+ · No GPU for numerical replay</div></div></div></section>
+
+  <section class="citation-section" id="citation"><div class="section-width citation-grid"><div><p class="eyebrow">CITATION</p><h2>Build on this work.</h2><p>If the execution interface helps your research, please cite the software release. A paper citation will be added when the manuscript is public.</p></div><div class="citation-box"><button class="copy-button" data-copy="bibtex" aria-label="Copy software citation">Copy BibTeX</button><pre><code id="bibtex">@software{fastrovervla2026,
+  author = {Zhao, Changtao and Guan, Yingxue and
+    Wang, Li and Song, Ziying and Zhao, Shijie and
+    Zhang, Yuhang and Zhang, Shengkai and Wang, Qing},
+  title = {FastRoverVLA: Fast Vision-Language-Action
+    Execution for Off-Road Autonomous Driving},
+  year = {2026},
+  version = {0.1.0},
+  url = {https://github.com/chang2tz/FastRoverVLA}
+}</code></pre></div></div></section>
+</main>
+<footer class="site-footer section-width"><a class="wordmark" href="#top">FastRover<span>VLA</span></a><p>State-consistent execution, beyond the paved road.</p><div><a href="https://github.com/chang2tz/FastRoverVLA/blob/main/THIRD_PARTY.md">Credits &amp; asset terms</a><a href="https://github.com/chang2tz/FastRoverVLA">GitHub ↗</a></div></footer>
+<dialog id="figure-dialog" aria-labelledby="dialog-caption"><button id="close-dialog" class="dialog-close" aria-label="Close enlarged figure">×</button><img id="dialog-image" alt=""><p id="dialog-caption"></p></dialog>
+<div id="copy-status" class="copy-status" role="status" aria-live="polite"></div>
+</body>
+</html>

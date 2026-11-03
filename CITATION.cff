@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "Please cite this software when using the released execution interface. Paper citation will be added when publicly available."
+type: software
+title: "FastRoverVLA: Fast Vision-Language-Action Execution for Off-Road Autonomous Driving"
+version: 0.1.0
+date-released: '2026-11-04'
+url: 'https://chang2tz.github.io/FastRoverVLA/'
+repository-code: 'https://github.com/chang2tz/FastRoverVLA'
+license: MIT
+authors:
+  - family-names: Zhao
+    given-names: Changtao
+  - family-names: Guan
+    given-names: Yingxue
+  - family-names: Wang
+    given-names: Li
+  - family-names: Song
+    given-names: Ziying
+  - family-names: Zhao
+    given-names: Shijie
+  - family-names: Zhang
+    given-names: Yuhang
+  - family-names: Zhang
+    given-names: Shengkai
+  - family-names: Wang
+    given-names: Qing

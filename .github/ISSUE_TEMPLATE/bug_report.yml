@@ -1,0 +1,23 @@
+name: Bug report
+description: Report an execution, replay or integration issue
+body:
+  - type: textarea
+    id: issue
+    attributes:
+      label: What happened?
+      description: Include expected and actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Command, configuration, dataset and relevant output. Do not include credentials or private data.
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python version, package version or commit, and optional backbone.

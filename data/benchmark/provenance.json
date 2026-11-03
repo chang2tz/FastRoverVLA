@@ -1,0 +1,25 @@
+{
+  "source_snapshot": "2026-11-03 matched-refresh numerical reproduction",
+  "inputs": {
+    "frame_sources.jsonl": "6e92eb004281ed61f5e193d9041506bfad3b283494a18700b75d14ddec43ded4",
+    "orad_direct_reuse_age_20260927.json": "09af78df4469013eb2315a05ee8490c6b8878f88a833509e0a809ca97eec5f80",
+    "per_window.jsonl": "3f83786a6a9e3caa762fee15bdca6c7ca286328892588b13831b1e356610d109",
+    "rellis_direct_reuse_age_20260927.json": "456ed58fb21c7f4f3a863a18a4487d1161b6fc5ba2851ce914e6d4eb484bb05d",
+    "helper_code/run_fastrover_causal_controls_20260916.py": "92aa4b928d27a56327d517e1384464fb88f94a182b67da33ed5c7cbe923efad1",
+    "helper_code/speed_first_policy_search.py": "ea59b9a5b7fdc25ee96684eeec70b04bd7222386ee5df5bfbe61586dbc18c7e5"
+  },
+  "outputs": {
+    "data/benchmark/orad.jsonl": {
+      "sha256": "b843c9b4b700268cb883ddcbe87734b5b409e0caeae8847aec81857ffa59a5ec",
+      "windows": 636,
+      "sequences": 11
+    },
+    "data/benchmark/rellis.jsonl": {
+      "sha256": "eaeda69dbba55e333d9cfa07ca9009ec04e5b0de9b9dd4d5c55973cd2ffeacea",
+      "windows": 650,
+      "sequences": 3
+    }
+  },
+  "raw_images_included": false,
+  "model_weights_included": false
+}

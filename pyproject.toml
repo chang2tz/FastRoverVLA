@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastrovervla"
+version = "0.1.0"
+description = "State-consistent recurrent execution for off-road vision-language-action planning"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "FastRoverVLA authors"}]
+dependencies = []
+classifiers = ["Programming Language :: Python :: 3", "Operating System :: OS Independent"]
+
+[project.urls]
+Homepage = "https://chang2tz.github.io/FastRoverVLA/"
+Repository = "https://github.com/chang2tz/FastRoverVLA"
+
+[project.scripts]
+fastrovervla = "fastrovervla.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,21 @@
+{
+  "dataset": "rellis",
+  "backbone": "Qwen3-VL-2B",
+  "protocol": "frozen_prediction_replay",
+  "execution": {
+    "horizon": 6,
+    "dt_s": 0.5,
+    "alpha": 0.65,
+    "beta": 0.65,
+    "speed_step": 0.25
+  },
+  "refresh": {
+    "mode": "adaptive",
+    "fixed_k": 8,
+    "short_k": 8,
+    "long_k": 24,
+    "threshold": 1.2073987765802507,
+    "speed_scale": 0.11986,
+    "curvature_scale": 0.13732
+  }
+}
