@@ -22,7 +22,7 @@ It maintains decoded speed–curvature actions with **recurrent state alignment 
 correction write-back**, while a bounded plan-variation rule controls refresh demand.
 The execution interface is training-free and does not access backbone features.
 
-![FastRoverVLA framework](docs/site/assets/method.png)
+![FastRoverVLA framework](docs/site/assets/framework-web.svg)
 
 ## News
 
@@ -143,7 +143,7 @@ latency. The CPU command does not repeat these GPU measurements.
 
 ### What the controls show
 
-![Matched distributions and correction during reuse](docs/site/assets/results_overview.png)
+![Empirical 3 s FDE distributions](docs/site/assets/error-profile.svg)
 
 Persistent state correction explains most of the accuracy benefit. A persistent
 motion-only control is competitive, including lower RELLIS error in the primary

@@ -1,8 +1,8 @@
 "use strict";
 (() => {
   const $ = (id) => document.getElementById(id);
-  const state = {dataset: "orad", cache: {}, rows: [], index: 0, timer: null};
-  const palette = {grid: "#e4e8dc", label: "#8c9681", full: "#244e3a", stale: "#bb6658", gt: "#8c9185"};
+  const state = {dataset: "rellis", cache: {}, rows: [], index: 0, timer: null};
+  const palette = {grid: "#ececf0", label: "#a0a3ad", full: "#f26a37", stale: "#3e424d", gt: "#a6a9b2"};
   const ns = "http://www.w3.org/2000/svg";
   const draw = (tag, attrs, parent, text) => {
     const element = document.createElementNS(ns, tag);
@@ -21,8 +21,8 @@
     if (!row) return;
     const svg = $("trajectory");
     svg.replaceChildren();
-    draw("title", {}, svg, `Window ${row.frame_index}: local trajectory comparison`);
-    draw("desc", {}, svg, "Ground truth, FastRoverVLA, and the matched-refresh control without correction during reuse. Distances are metres.");
+    draw("title", {id:"trajectory-title"}, svg, `Window ${row.frame_index}: local trajectory comparison`);
+    draw("desc", {id:"trajectory-description"}, svg, "Ground truth, FastRoverVLA, and the matched-refresh control without correction during reuse. Distances are metres.");
     const paths = [row.gt, row.full, row.control];
     const points = paths.flat().concat([[0, 0]]);
     const maxX = Math.max(1, ...points.map(p => p[0])) * 1.12;
@@ -50,9 +50,9 @@
     ].forEach(series => {
       const sequence = [[0, 0], ...series.points];
       draw("polyline", {points: sequence.map(p => `${px(p[0])},${py(p[1])}`).join(" "), fill: "none", stroke: series.color, "stroke-width": series.width, "stroke-linejoin": "round", "stroke-linecap": "round", ...(series.dash ? {"stroke-dasharray": series.dash} : {})}, svg);
-      series.points.forEach(p => draw("circle", {cx: px(p[0]), cy: py(p[1]), r: 2.8, fill: series.color, stroke: "#fbfcf8", "stroke-width": 1}, svg));
+      series.points.forEach(p => draw("circle", {cx: px(p[0]), cy: py(p[1]), r: 2.8, fill: series.color, stroke: "#ffffff", "stroke-width": 1}, svg));
     });
-    draw("circle", {cx: px(0), cy: py(0), r: 5, fill: palette.full, stroke: "#fbfcf8", "stroke-width": 2}, svg);
+    draw("circle", {cx: px(0), cy: py(0), r: 5, fill: palette.full, stroke: "#ffffff", "stroke-width": 2}, svg);
     draw("text", {x: px(0) + 9, y: py(0) - 12, fill: palette.label, "font-size": 10}, svg, "Ego");
     $("frame-label").textContent = `Window ${row.frame_index}`;
     $("refresh-state").textContent = row.refresh ? "NEW PLAN ADMITTED" : "PLAN REUSE";
@@ -67,7 +67,7 @@
   function setScene(id) {
     stop();
     state.rows = state.cache[state.dataset].filter(r => r.sequence === id);
-    state.index = 0;
+    state.index = Math.min(12, state.rows.length - 1);
     $("frame-slider").max = Math.max(0, state.rows.length - 1);
     render();
   }
@@ -151,5 +151,5 @@
     if (link) {if (entry.isIntersecting) link.setAttribute("aria-current", "location"); else link.removeAttribute("aria-current");}
   }), {rootMargin: "-15% 0px -65% 0px"});
   document.querySelectorAll("#method,#explore,#results,#release").forEach(section => observer.observe(section));
-  dataset("orad");
+  dataset("rellis");
 })();

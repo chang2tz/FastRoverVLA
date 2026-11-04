@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="365" viewBox="0 0 1040 365">
+<rect width="1040" height="365" fill="#fafafa"/>
+<text x="40" y="42" fill="#7a7b80" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" text-anchor="start" letter-spacing="1.5">ONE DECISION AT REFRESH</text>
+<text x="40" y="99" fill="#1b1c1e" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="500" text-anchor="start" >Plan variation</text>
+<polyline points="40.00,154.00 47.00,145.93 54.00,142.64 61.00,146.03 68.00,153.92 75.00,161.42 82.00,163.88 89.00,159.68 96.00,151.28 103.00,143.65 110.00,141.32 117.00,145.59 124.00,153.76 131.00,160.77 138.00,162.25 145.00,157.20 152.00,148.57 159.00,141.49 166.00,140.14 173.00,145.23 180.00,153.57 187.00,159.98 194.00,160.48 201.00,154.64 208.00,145.90" fill="none" stroke="#8e9096" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+<polyline points="40.00,200.33 47.00,194.90 54.00,193.01 61.00,195.30 68.00,200.98 75.00,208.07 82.00,214.08 89.00,216.92 96.00,215.60 103.00,210.58 110.00,203.60 117.00,197.12 124.00,193.38 131.00,193.71 138.00,197.98 145.00,204.70 152.00,211.53 159.00,216.07 166.00,216.75 173.00,213.32 180.00,206.99 187.00,199.96 194.00,194.69 201.00,193.02 208.00,195.54" fill="none" stroke="#45474e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+<text x="40" y="251" fill="#7a7b80" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" text-anchor="start" >Speed + curvature differences</text>
+<path d="M240,172 L283,172" fill="none" stroke="#a2a3a6" stroke-width="1.5" />
+<rect x="303" y="124" width="160" height="98" fill="#fff" stroke="#d4d4d9" rx="3" />
+<text x="383" y="161" fill="#1b1c1e" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="500" text-anchor="middle" >Normalize</text>
+<text x="383" y="193" fill="#7a7b80" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" text-anchor="middle" >validation P90</text>
+<path d="M463,172 L506,172" fill="none" stroke="#a2a3a6" stroke-width="1.5" />
+<text x="526" y="99" fill="#1b1c1e" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="500" text-anchor="start" >Bounded reuse</text>
+<text x="526" y="141" fill="#7a7b80" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="400" text-anchor="start" letter-spacing="1.3">HIGHER VARIATION</text>
+<text x="984" y="141" fill="#1b1c1e" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="500" text-anchor="end" >K = 8</text>
+<text x="526" y="229" fill="#7a7b80" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="400" text-anchor="start" letter-spacing="1.3">LOWER VARIATION</text>
+<text x="984" y="229" fill="#1b1c1e" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="500" text-anchor="end" >K = 24</text>
+<rect x="526.0" y="166" width="10" height="22" fill="#f26a37" stroke="none" rx="1" />
+<rect x="543.6" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="561.2" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="578.8" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="596.4" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="614.0" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="631.6" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="649.2" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="666.8" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="684.4" y="166" width="10" height="22" fill="#f26a37" stroke="none" rx="1" />
+<rect x="702.0" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="719.6" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="737.2" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="754.8" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="772.4000000000001" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="790.0" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="807.6" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="825.2" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="842.8" y="166" width="10" height="22" fill="#f26a37" stroke="none" rx="1" />
+<rect x="860.4000000000001" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="878.0" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="895.6" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="913.2" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="930.8" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="948.4000000000001" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="966.0" y="166" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="526.0" y="254" width="10" height="22" fill="#f26a37" stroke="none" rx="1" />
+<rect x="543.6" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="561.2" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="578.8" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="596.4" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="614.0" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="631.6" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="649.2" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="666.8" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="684.4" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="702.0" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="719.6" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="737.2" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="754.8" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="772.4000000000001" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="790.0" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="807.6" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="825.2" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="842.8" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="860.4000000000001" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="878.0" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="895.6" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="913.2" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="930.8" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="948.4000000000001" y="254" width="10" height="22" fill="#e0e0e4" stroke="none" rx="1" />
+<rect x="966.0" y="254" width="10" height="22" fill="#f26a37" stroke="none" rx="1" />
+<rect x="526" y="304" width="8" height="8" fill="#f26a37" stroke="none" rx="0" />
+<text x="544" y="313" fill="#7a7b80" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" text-anchor="start" >fresh plan</text>
+<rect x="658" y="304" width="8" height="8" fill="#dedee3" stroke="none" rx="0" />
+<text x="677" y="313" fill="#7a7b80" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" text-anchor="start" >state-conditioned reuse</text>
+<text x="40" y="329" fill="#7a7b80" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="400" text-anchor="start" >Illustrative signals · RELLIS budget configuration</text>
+</svg>
