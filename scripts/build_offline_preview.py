@@ -28,6 +28,10 @@ def main():
     start = html.index('<script>'); end = html.index('</script>', start) + len('</script>')
     block = html[start:end]; html = html[:start] + html[end:]
     html = html.replace('</body>', block + '\n</body>')
+    # Source-PDF downloads are outgoing publication links, like the GitHub links.
+    # Keep them usable when the preview HTML is opened outside the source tree.
+    for pdf in set(re.findall(r'assets/[A-Za-z0-9_.-]+\.pdf', html)):
+        html = html.replace(pdf, 'https://chang2tz.github.io/FastRoverVLA/' + pdf)
     assets = set(re.findall(r'assets/[A-Za-z0-9_.-]+\.(?:png|webp|svg|woff2)(?:\?v=\d+)?', html))
     for ref in sorted(assets, key=len, reverse=True):
         path = urlsplit(ref).path

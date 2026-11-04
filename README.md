@@ -22,7 +22,7 @@ It maintains decoded speed–curvature actions with **recurrent state alignment 
 correction write-back**, while a bounded plan-variation rule controls refresh demand.
 The execution interface is training-free and does not access backbone features.
 
-![FastRoverVLA framework](docs/site/assets/framework-web.svg)
+![FastRoverVLA framework from the manuscript](docs/site/assets/method.png)
 
 ## News
 
@@ -143,7 +143,7 @@ latency. The CPU command does not repeat these GPU measurements.
 
 ### What the controls show
 
-![Empirical 3 s FDE distributions](docs/site/assets/error-profile.svg)
+![Manuscript results: ADE distributions and matched-refresh state correction](docs/site/assets/results_overview.png)
 
 Persistent state correction explains most of the accuracy benefit. A persistent
 motion-only control is competitive, including lower RELLIS error in the primary
@@ -166,6 +166,11 @@ docs/site/           GitHub Pages source and manuscript figures
 ```
 
 ## Project page
+
+The permanent project-page URL is **https://chang2tz.github.io/FastRoverVLA/**.
+It includes the manuscript's framework, result plots and camera–BEV visualizations,
+with full-resolution figures and an interactive numerical replay. See
+[links for the manuscript](docs/publication_links.md) for copy-ready LaTeX.
 
 ```bash
 python scripts/export_site_data.py

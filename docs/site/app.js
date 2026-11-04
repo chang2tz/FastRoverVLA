@@ -137,6 +137,43 @@
     $("copy-status").classList.add("visible");
     setTimeout(() => $("copy-status").classList.remove("visible"), 2200);
   }));
+  const paperFigures = {
+    framework: {
+      paper: {src:"assets/method.webp", full:"assets/method.png", source:"assets/method.pdf", width:1645, height:897,
+        alt:"Original manuscript framework: frozen VLM, persistent action buffer, consume, align and write-back, and output waypoints.",
+        caption:"From the manuscript. Frozen visual planning initializes the action buffer; state alignment and correction write-back maintain execution between refreshes."},
+      schematic: {src:"assets/framework-web.svg", full:"assets/framework-web.svg", source:"assets/framework-web.svg", width:1440, height:575,
+        alt:"Execution schematic showing visual plan initialization, measured-state alignment, waypoint integration and correction write-back.",
+        caption:"Execution walkthrough. Decode at refresh; align, consume and write back at every update. See the paper figure for the full architecture."}
+    },
+    evidence: {
+      correction: {src:"assets/results_overview.webp", full:"assets/results_overview.png", source:"assets/results_overview.png", width:2777, height:1454,
+        alt:"Original manuscript plots: ORAD and RELLIS ADE distributions and mean FDE versus reuse age under matched refresh-time processing.",
+        caption:"From the manuscript. The lower panels compare continued state correction with no correction during reuse, using identical processing at shared refresh points."},
+      comparison: {src:"assets/model_comparison.webp", full:"assets/model_comparison.png", source:"assets/model_comparison.png", width:2405, height:940,
+        alt:"Original manuscript ADE comparison of FastRoverVLA and six external-system outputs on RELLIS-3D.",
+        caption:"Original model-comparison figure from the manuscript. Read the evaluation protocol for the input, adapter and horizon conventions used by the compared systems."},
+      ecdf: {src:"assets/error-profile.svg", full:"assets/error-profile.svg", source:"assets/error-profile.svg", width:1380, height:490,
+        alt:"Empirical cumulative FDE distributions computed from all released ORAD and RELLIS windows.",
+        caption:"Released numerical replay. Empirical cumulative 3 s FDE, with no density smoothing. Larger cumulative share at a fixed error threshold is better; the display is clipped at 2.5 m."}
+    }
+  };
+  document.querySelectorAll("[data-figure-group]").forEach(button => button.addEventListener("click", () => {
+    const group = button.dataset.figureGroup;
+    const selected = paperFigures[group]?.[button.dataset.figureKey];
+    const figure = document.querySelector(`[data-figure-view="${group}"]`);
+    if (!selected || !figure) return;
+    const zoom = figure.querySelector(".zoom-trigger"), picture = zoom.querySelector("img");
+    picture.src = selected.src; picture.alt = selected.alt;
+    picture.width = selected.width; picture.height = selected.height;
+    zoom.dataset.image = selected.full; zoom.dataset.caption = selected.caption;
+    figure.querySelector("figcaption").textContent = selected.caption;
+    figure.querySelector(".paper-figure-source").href = selected.source;
+    document.querySelectorAll(`[data-figure-group="${group}"]`).forEach(choice => {
+      const active = choice === button;
+      choice.classList.toggle("active", active); choice.setAttribute("aria-pressed", String(active));
+    });
+  }));
   const dialog = $("figure-dialog");
   document.querySelectorAll("[data-image]").forEach(button => button.addEventListener("click", () => {
     $("dialog-image").src = button.dataset.image;
