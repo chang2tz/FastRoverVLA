@@ -221,6 +221,8 @@ def plot_results():
     fig.legend(handles,labels,loc="lower center",ncol=3,frameon=False,bbox_to_anchor=(.5,-.008),columnspacing=3,handlelength=2.5)
     fig.subplots_adjust(left=.065,right=.98,bottom=.23,top=.84,wspace=.27)
     fig.savefig(ASSETS/'error-profile.svg',facecolor=fig.get_facecolor(),metadata={'Title':'Empirical error distributions from frozen Qwen3 replay'})
+    vector = ASSETS/'error-profile.svg'
+    vector.write_text('\n'.join(line.rstrip() for line in vector.read_text(encoding='utf-8').splitlines())+'\n', encoding='utf-8', newline='\n')
     fig.savefig(ASSETS/'error-profile.png',dpi=160,facecolor=fig.get_facecolor())
     plt.close(fig)
 
