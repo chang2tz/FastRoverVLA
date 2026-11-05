@@ -12,11 +12,16 @@
   to its own license and model terms.
 - The project page self-hosts Manrope and IBM Plex Mono, under their SIL Open Font
   Licenses. The license texts are included beside the webfonts in `docs/site/assets/`.
-- The dark terrain wireframe is an original conceptual illustration. It is not a
-  measured terrain reconstruction or evidence of a closed-loop run. The new method
-  and refresh diagrams are original web schematics; the ECDF uses the released
-  per-window numerical results with no density smoothing.
-- Presentation and documentation references: [MomAD](https://github.com/adept-thu/MomAD),
-  [KineWorld](https://github.com/modaxiansheng/KineWorld), and
-  [EVEWorld](https://github.com/behappya/EVEWorld). The project page is an original
+- The six example camera and bird's-eye panels are faithful crops rendered from
+  the manuscript's qualitative figure. Their coordinates, source hash and metrics
+  are documented in `docs/site/assets/examples/asset-source.md` and `metadata.json`.
+  Camera overlays, axes and trajectory geometry are preserved.
+- Legacy conceptual web schematics remain in the assets directory for compatibility;
+  the current page centers original manuscript figures and recorded camera examples.
+- Presentation references include [MomAD](https://github.com/adept-thu/MomAD),
+  [KineWorld](https://modaxiansheng.github.io/KineWorld/),
+  [EVEWorld](https://eve-world.github.io/EVEWorld/),
+  [OpenVLA](https://openvla.github.io/),
+  [Diffusion Policy](https://diffusion-policy.cs.columbia.edu/), and
+  [Nerfies](https://nerfies.github.io/). The project page is an original
   implementation; no reference-project code, figures, results or media are copied.

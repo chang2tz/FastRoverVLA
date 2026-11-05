@@ -1,0 +1,228 @@
+{
+  "source": {
+    "file": "figure/qualitative_execution.pdf",
+    "sha256": "8797dde47c8e7bcf181447a7c3758157040e8404816483123e3780bca96f498a",
+    "paper_figure": 6,
+    "pdf_page": 1,
+    "page_size_pt": [
+      515.52001953125,
+      349.20001220703125
+    ],
+    "coordinate_system": "PDF points; origin at top left; rectangles are [x0,y0,x1,y1]"
+  },
+  "dataset": "ORAD-3D",
+  "protocol": "Matched frozen Qwen3-VL predictions; open-loop logged-state trajectory evaluation",
+  "legend": [
+    {
+      "label": "Ground truth",
+      "color": "#80a65b"
+    },
+    {
+      "label": "Every-update",
+      "color": "#be8b78"
+    },
+    {
+      "label": "FastRoverVLA",
+      "color": "#218895"
+    }
+  ],
+  "fde_order": [
+    "every_update",
+    "fastrovervla"
+  ],
+  "fde_units": "m",
+  "examples": [
+    {
+      "id": "rough",
+      "title": "Rough straight",
+      "subfigure": "a",
+      "caption": "FDE: 0.88 / 0.06 m",
+      "fde_every_update_m": 0.88,
+      "fde_fastrovervla_m": 0.06,
+      "camera": {
+        "file": "rough-camera.webp",
+        "width": 1001,
+        "height": 563,
+        "clip_pt": [
+          8.85,
+          31.35,
+          146.49,
+          108.69
+        ],
+        "sha256": "660b558e21a520ba32db9fd08630ea0700ba9137bf6b29c347a310f6b192ec9a"
+      },
+      "bev": {
+        "file": "rough-bev.webp",
+        "width": 651,
+        "height": 715,
+        "clip_pt": [
+          149.1,
+          21.2,
+          247.2,
+          129.0
+        ],
+        "sha256": "6663d4eb2525d9143741bf2c4ff1cea706fc399319668c7024668657c52d858b"
+      }
+    },
+    {
+      "id": "dirt",
+      "title": "Dirt trail",
+      "subfigure": "b",
+      "caption": "FDE: 0.64 / 0.06 m",
+      "fde_every_update_m": 0.64,
+      "fde_fastrovervla_m": 0.06,
+      "camera": {
+        "file": "dirt-camera.webp",
+        "width": 1001,
+        "height": 563,
+        "clip_pt": [
+          270.75,
+          31.35,
+          408.39,
+          108.69
+        ],
+        "sha256": "17638b6815f0830e370ea590b7d5cb2b69f823ca1a0fdbe9e4d0ceaac844a44d"
+      },
+      "bev": {
+        "file": "dirt-bev.webp",
+        "width": 651,
+        "height": 718,
+        "clip_pt": [
+          411.1,
+          21.2,
+          508.8,
+          129.0
+        ],
+        "sha256": "bc7f0d09899c87a8a430489ee5844b9880aa91670ab92029a26580f80ac15823"
+      }
+    },
+    {
+      "id": "night",
+      "title": "Night turn",
+      "subfigure": "c",
+      "caption": "FDE: 0.63 / 0.35 m",
+      "fde_every_update_m": 0.63,
+      "fde_fastrovervla_m": 0.35,
+      "camera": {
+        "file": "night-camera.webp",
+        "width": 1001,
+        "height": 564,
+        "clip_pt": [
+          8.85,
+          139.35,
+          146.49,
+          216.87
+        ],
+        "sha256": "cbf2eef2023ccc668b281d978bfa715d44824de25ad0c65e70ed97d312476923"
+      },
+      "bev": {
+        "file": "night-bev.webp",
+        "width": 651,
+        "height": 715,
+        "clip_pt": [
+          149.1,
+          129.27,
+          247.2,
+          237.07
+        ],
+        "sha256": "89f86c0c234b244cfdb2d84a5ee473ee358752bebb7354d2af62986d03134848"
+      }
+    },
+    {
+      "id": "confined",
+      "title": "Confined left",
+      "subfigure": "d",
+      "caption": "FDE: 0.82 / 0.48 m",
+      "fde_every_update_m": 0.82,
+      "fde_fastrovervla_m": 0.48,
+      "camera": {
+        "file": "confined-camera.webp",
+        "width": 1001,
+        "height": 564,
+        "clip_pt": [
+          270.75,
+          139.35,
+          408.39,
+          216.87
+        ],
+        "sha256": "6374cc4d62be33c041b083f0ef32a4408459a1d48753d89d48d47ec6ac7b2030"
+      },
+      "bev": {
+        "file": "confined-bev.webp",
+        "width": 651,
+        "height": 718,
+        "clip_pt": [
+          411.1,
+          129.27,
+          508.8,
+          237.07
+        ],
+        "sha256": "0e153bc56a328bc27415cc0e8c41aece23c411f7e4057b99c58490cd6e4ac3da"
+      }
+    },
+    {
+      "id": "snow",
+      "title": "Snowy right",
+      "subfigure": "e",
+      "caption": "FDE: 0.37 / 0.15 m",
+      "fde_every_update_m": 0.37,
+      "fde_fastrovervla_m": 0.15,
+      "camera": {
+        "file": "snow-camera.webp",
+        "width": 1001,
+        "height": 564,
+        "clip_pt": [
+          8.85,
+          247.35,
+          146.49,
+          324.87
+        ],
+        "sha256": "3ea5d6b8330f8652ca2fdb97826c13ed9802d4ef555047d1b16d7fa161ae4606"
+      },
+      "bev": {
+        "file": "snow-bev.webp",
+        "width": 651,
+        "height": 715,
+        "clip_pt": [
+          149.1,
+          237.34,
+          247.2,
+          345.14
+        ],
+        "sha256": "bbf69dd9e11e6721e16e510e42ca9cc1613665286316f51b7324528483cb6a01"
+      }
+    },
+    {
+      "id": "woodland",
+      "title": "Woodland trail",
+      "subfigure": "f",
+      "caption": "FDE: 1.11 / 0.32 m",
+      "fde_every_update_m": 1.11,
+      "fde_fastrovervla_m": 0.32,
+      "camera": {
+        "file": "woodland-camera.webp",
+        "width": 1001,
+        "height": 564,
+        "clip_pt": [
+          270.75,
+          247.35,
+          408.39,
+          324.87
+        ],
+        "sha256": "3e17220bed44a641aa3103331ba3f53a056fe935b83309119be072f03c24018f"
+      },
+      "bev": {
+        "file": "woodland-bev.webp",
+        "width": 651,
+        "height": 718,
+        "clip_pt": [
+          411.1,
+          237.34,
+          508.8,
+          345.14
+        ],
+        "sha256": "337863d0d9d2031cab4f1507508a5dfbdfe00d94f173797fc66453778512af60"
+      }
+    }
+  ]
+}

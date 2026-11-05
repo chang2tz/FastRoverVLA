@@ -2,7 +2,7 @@
 (() => {
   const $ = (id) => document.getElementById(id);
   const state = {dataset: "rellis", cache: {}, rows: [], index: 0, timer: null};
-  const palette = {grid: "#ececf0", label: "#a0a3ad", full: "#f26a37", stale: "#3e424d", gt: "#a6a9b2"};
+  const palette = {grid: "#e8eeea", label: "#68746e", full: "#27838d", stale: "#b47c68", gt: "#7ca059"};
   const ns = "http://www.w3.org/2000/svg";
   const draw = (tag, attrs, parent, text) => {
     const element = document.createElementNS(ns, tag);
@@ -34,15 +34,15 @@
     for (let i = 0; i <= 5; i++) {
       const x = minX + (maxX - minX) * i / 5;
       draw("line", {x1: px(x), y1: top, x2: px(x), y2: top + height, stroke: palette.grid}, svg);
-      draw("text", {x: px(x), y: top + height + 23, "text-anchor": "middle", fill: palette.label, "font-size": 10}, svg, x.toFixed(1));
+      draw("text", {x: px(x), y: top + height + 23, "text-anchor": "middle", fill: palette.label, "font-size": 11}, svg, x.toFixed(1));
     }
     for (let i = -2; i <= 2; i++) {
       const y = spanY * i / 2;
       draw("line", {x1: left, y1: py(y), x2: left + width, y2: py(y), stroke: palette.grid}, svg);
-      draw("text", {x: left - 12, y: py(y) + 3, "text-anchor": "end", fill: palette.label, "font-size": 10}, svg, y.toFixed(1));
+      draw("text", {x: left - 12, y: py(y) + 3, "text-anchor": "end", fill: palette.label, "font-size": 11}, svg, y.toFixed(1));
     }
-    draw("text", {x: left + width / 2, y: 410, "text-anchor": "middle", fill: palette.label, "font-size": 11}, svg, "Forward distance (m)");
-    draw("text", {x: 17, y: top + height / 2, transform: `rotate(-90 17 ${top + height / 2})`, "text-anchor": "middle", fill: palette.label, "font-size": 11}, svg, "Lateral distance (m)");
+    draw("text", {x: left + width / 2, y: 410, "text-anchor": "middle", fill: palette.label, "font-size": 12}, svg, "Forward distance (m)");
+    draw("text", {x: 17, y: top + height / 2, transform: `rotate(-90 17 ${top + height / 2})`, "text-anchor": "middle", fill: palette.label, "font-size": 12}, svg, "Lateral distance (m)");
     [
       {points: row.gt, color: palette.gt, dash: "5 5", width: 2},
       {points: row.control, color: palette.stale, width: 2.7},
@@ -53,7 +53,7 @@
       series.points.forEach(p => draw("circle", {cx: px(p[0]), cy: py(p[1]), r: 2.8, fill: series.color, stroke: "#ffffff", "stroke-width": 1}, svg));
     });
     draw("circle", {cx: px(0), cy: py(0), r: 5, fill: palette.full, stroke: "#ffffff", "stroke-width": 2}, svg);
-    draw("text", {x: px(0) + 9, y: py(0) - 12, fill: palette.label, "font-size": 10}, svg, "Ego");
+    draw("text", {x: px(0) + 9, y: py(0) - 12, fill: palette.label, "font-size": 11}, svg, "Ego");
     $("frame-label").textContent = `Window ${row.frame_index}`;
     $("refresh-state").textContent = row.refresh ? "NEW PLAN ADMITTED" : "PLAN REUSE";
     $("refresh-state").classList.toggle("refreshing", row.refresh);
@@ -137,43 +137,50 @@
     $("copy-status").classList.add("visible");
     setTimeout(() => $("copy-status").classList.remove("visible"), 2200);
   }));
-  const paperFigures = {
-    framework: {
-      paper: {src:"assets/method.webp", full:"assets/method.png", source:"assets/method.pdf", width:1645, height:897,
-        alt:"Original manuscript framework: frozen VLM, persistent action buffer, consume, align and write-back, and output waypoints.",
-        caption:"From the manuscript. Frozen visual planning initializes the action buffer; state alignment and correction write-back maintain execution between refreshes."},
-      schematic: {src:"assets/framework-web.svg", full:"assets/framework-web.svg", source:"assets/framework-web.svg", width:1440, height:575,
-        alt:"Execution schematic showing visual plan initialization, measured-state alignment, waypoint integration and correction write-back.",
-        caption:"Execution walkthrough. Decode at refresh; align, consume and write back at every update. See the paper figure for the full architecture."}
-    },
-    evidence: {
-      correction: {src:"assets/results_overview.webp", full:"assets/results_overview.png", source:"assets/results_overview.png", width:2777, height:1454,
-        alt:"Original manuscript plots: ORAD and RELLIS ADE distributions and mean FDE versus reuse age under matched refresh-time processing.",
-        caption:"From the manuscript. The lower panels compare continued state correction with no correction during reuse, using identical processing at shared refresh points."},
-      comparison: {src:"assets/model_comparison.webp", full:"assets/model_comparison.png", source:"assets/model_comparison.png", width:2405, height:940,
-        alt:"Original manuscript ADE comparison of FastRoverVLA and six external-system outputs on RELLIS-3D.",
-        caption:"Original model-comparison figure from the manuscript. Read the evaluation protocol for the input, adapter and horizon conventions used by the compared systems."},
-      ecdf: {src:"assets/error-profile.svg", full:"assets/error-profile.svg", source:"assets/error-profile.svg", width:1380, height:490,
-        alt:"Empirical cumulative FDE distributions computed from all released ORAD and RELLIS windows.",
-        caption:"Released numerical replay. Empirical cumulative 3 s FDE, with no density smoothing. Larger cumulative share at a fixed error threshold is better; the display is clipped at 2.5 m."}
-    }
+  const scenarios = {
+    rough: {name: "Rough straight", every: "0.88", full: "0.06"},
+    dirt: {name: "Dirt trail", every: "0.64", full: "0.06"},
+    night: {name: "Night turn", every: "0.63", full: "0.35"},
+    confined: {name: "Confined left", every: "0.82", full: "0.48"},
+    snow: {name: "Snowy right", every: "0.37", full: "0.15"},
+    woodland: {name: "Woodland trail", every: "1.11", full: "0.32"}
   };
-  document.querySelectorAll("[data-figure-group]").forEach(button => button.addEventListener("click", () => {
-    const group = button.dataset.figureGroup;
-    const selected = paperFigures[group]?.[button.dataset.figureKey];
-    const figure = document.querySelector(`[data-figure-view="${group}"]`);
-    if (!selected || !figure) return;
-    const zoom = figure.querySelector(".zoom-trigger"), picture = zoom.querySelector("img");
-    picture.src = selected.src; picture.alt = selected.alt;
-    picture.width = selected.width; picture.height = selected.height;
-    zoom.dataset.image = selected.full; zoom.dataset.caption = selected.caption;
-    figure.querySelector("figcaption").textContent = selected.caption;
-    figure.querySelector(".paper-figure-source").href = selected.source;
-    document.querySelectorAll(`[data-figure-group="${group}"]`).forEach(choice => {
-      const active = choice === button;
-      choice.classList.toggle("active", active); choice.setAttribute("aria-pressed", String(active));
+  function showScenario(key) {
+    const scene = scenarios[key];
+    if (!scene) return;
+    document.querySelectorAll(".scenario-button[data-scene]").forEach(button => {
+      const active = button.dataset.scene === key;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
     });
-  }));
+    const caption = `${scene.name}: matched frozen-prediction example from the manuscript. Final displacement error: every-update execution ${scene.every} m; FastRoverVLA ${scene.full} m.`;
+    for (const [id, view, description] of [
+      ["scene-camera", "camera", "camera view with projected trajectories"],
+      ["scene-bev", "bev", "bird's-eye view of the trajectory comparison"]
+    ]) {
+      const picture = $(id);
+      if (!picture) continue;
+      picture.src = `assets/examples/${key}-${view}.webp`;
+      picture.alt = `${scene.name}: ${description}.`;
+      const zoom = picture.closest("[data-image]");
+      if (zoom) {
+        zoom.dataset.image = picture.getAttribute("src");
+        zoom.dataset.caption = caption;
+        zoom.setAttribute("aria-label", `Enlarge ${scene.name.toLowerCase()} ${view === "camera" ? "camera view" : "trajectory comparison"}`);
+      }
+    }
+    if ($("scene-name")) $("scene-name").textContent = scene.name;
+    if ($("scene-every")) $("scene-every").textContent = scene.every;
+    if ($("scene-full")) $("scene-full").textContent = scene.full;
+  }
+  document.querySelectorAll(".scenario-button[data-scene]").forEach(button => {
+    button.addEventListener("click", () => showScenario(button.dataset.scene));
+  });
+  if ($("scene-name")) {
+    $("scene-name").setAttribute("aria-live", "polite");
+    $("scene-name").setAttribute("aria-atomic", "true");
+  }
+  showScenario("woodland");
   const dialog = $("figure-dialog");
   document.querySelectorAll("[data-image]").forEach(button => button.addEventListener("click", () => {
     $("dialog-image").src = button.dataset.image;
