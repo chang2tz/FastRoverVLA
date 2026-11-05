@@ -8,9 +8,9 @@
   <meta property="og:title" content="FastRoverVLA — Off-Road Vision-Language-Action Execution">
   <meta property="og:description" content="Keep decoded plans aligned with vehicle motion between visual refreshes. Explore the method, paper figures, results and open-source code.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://chang2tz.github.io/FastRoverVLA/">
-  <meta property="og:image" content="https://chang2tz.github.io/FastRoverVLA/assets/qualitative_execution.png">
-  <link rel="canonical" href="https://chang2tz.github.io/FastRoverVLA/">
+  <meta property="og:url" content="https://adept-org.github.io/FastRoverVLA/">
+  <meta property="og:image" content="https://adept-org.github.io/FastRoverVLA/assets/qualitative_execution.png">
+  <link rel="canonical" href="https://adept-org.github.io/FastRoverVLA/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/manrope-600.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css?v=5">
@@ -22,7 +22,7 @@
 <header class="site-header">
   <a class="wordmark" href="#top">FastRover<span>VLA</span></a>
   <nav aria-label="Main navigation"><a href="#method">Method</a><a href="#qualitative">Examples</a><a href="#results">Results</a><a href="#release">Code</a></nav>
-  <a class="nav-github" href="https://github.com/chang2tz/FastRoverVLA">GitHub <span aria-hidden="true">↗</span></a>
+  <a class="nav-github" href="https://github.com/ADEPT-ORG/FastRoverVLA">GitHub <span aria-hidden="true">↗</span></a>
 </header>
 <main id="main">
   <section class="masthead" id="top" aria-labelledby="paper-title">
@@ -35,7 +35,7 @@
     </div>
     <div class="affiliations"><span><sup>1</sup> Beijing Institute of Technology</span><span><sup>2</sup> Yanshan University</span><span><sup>3</sup> Chang’an University</span><span><sup>4</sup> Beijing Jiaotong University</span></div>
     <p class="corresponding">† Corresponding author</p>
-    <div class="resource-links"><a class="button primary" href="https://github.com/chang2tz/FastRoverVLA"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></svg>Code</a><a class="button" href="#method">Explore the method <span aria-hidden="true">↓</span></a><a class="button" href="#citation">Citation</a></div>
+    <div class="resource-links"><a class="button primary" href="https://github.com/ADEPT-ORG/FastRoverVLA"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-13-2 16"/></svg>Code</a><a class="button" href="#method">Explore the method <span aria-hidden="true">↓</span></a><a class="button" href="#citation">Citation</a></div>
   </section>
 
   <section class="teaser section-width" aria-label="Scenes from the paper">
@@ -89,11 +89,11 @@
     <div class="cost-summary"><div><p class="eyebrow">INDEPENDENT SERIAL REQUESTS</p><h3>Reduced cumulative<br>request-processing cost.</h3></div><div><strong>16.6×</strong><span>ORAD-3D</span><small>355.4 → 21.4 ms / update</small></div><div><strong>20.8×</strong><span>RELLIS-3D</span><small>443.9 → 21.3 ms / update</small></div></div>
     <p class="figure-note">Measured request-wrapper processing cost under serial replay, separate from the controlled replay above. It does not measure concurrent runtime speedup or complete vehicle latency.</p>
     <figure class="paper-figure evidence-figure"><button class="zoom-trigger" data-image="assets/results_overview.png" data-caption="Original paper results. ADE distributions above; mean final displacement error by reuse age below, with identical processing at shared refresh times." aria-label="Enlarge error distributions and correction results"><img src="assets/results_overview.webp" width="2777" height="1454" alt="Paper results showing trajectory-error distributions and the benefit of continued state correction during reuse" loading="lazy"><span class="zoom-label">Expand figure ↗</span></button><figcaption><span>Figure 2.</span> Error distributions and the effect of continued state correction. The lower panels hold refresh times and refresh-time processing fixed.</figcaption></figure>
-    <div class="evaluation-note"><h3>What the evidence supports</h3><p>Persistent state correction explains most of the observed accuracy benefit. Motion-only recurrent execution is competitive, including slightly lower pooled error on RELLIS-3D. Four frozen backbones, a 931-window disjoint-sequence test, and a past-only heading check support the execution effect. Evaluation remains open-loop; scene-dependent decisions and closed-loop driving require separate validation.</p><a href="https://github.com/chang2tz/FastRoverVLA/blob/main/docs/evaluation.md">Read the evaluation protocol ↗</a></div>
+    <div class="evaluation-note"><h3>What the evidence supports</h3><p>Persistent state correction explains most of the observed accuracy benefit. Motion-only recurrent execution is competitive, including slightly lower pooled error on RELLIS-3D. Four frozen backbones, a 931-window disjoint-sequence test, and a past-only heading check support the execution effect. Evaluation remains open-loop; scene-dependent decisions and closed-loop driving require separate validation.</p><a href="https://github.com/ADEPT-ORG/FastRoverVLA/blob/main/docs/evaluation.md">Read the evaluation protocol ↗</a></div>
     <details class="replay-disclosure" id="explore"><summary><span><strong>Explore the released numerical replay</strong><small>Compare continued correction and a matched-refresh control, window by window.</small></span><span class="summary-plus" aria-hidden="true">+</span></summary><div class="replay-content"><div class="explorer-toolbar"><div aria-label="Select replay dataset" class="dataset-switch" role="group"><button aria-pressed="true" class="dataset-button active" data-dataset="orad">ORAD-3D</button><button aria-pressed="false" class="dataset-button" data-dataset="rellis">RELLIS-3D</button></div><label class="scene-control">Sequence <select aria-label="Replay sequence" id="scene-select"><option>Loading…</option></select></label><span class="replay-label"><i class="status-dot"></i> RECORDED DATA</span></div><div class="replay-grid"><div class="trajectory-view"><svg aria-labelledby="trajectory-title trajectory-description" id="trajectory" role="img" viewbox="0 0 720 430"><title id="trajectory-title">Local trajectory comparison</title><desc id="trajectory-description">Ground truth, recurrent correction and a control with identical refresh processing but no correction during reuse.</desc><text text-anchor="middle" x="360" y="215">Loading replay data…</text></svg><div class="plot-legend"><span><i class="legend-line gt"></i>Recorded target</span><span><i class="legend-line full"></i>FastRoverVLA</span><span><i class="legend-line stale"></i>No reuse correction</span></div></div><aside class="replay-details"><p class="eyebrow">WINDOW INSPECTOR</p><p class="frame-label" id="frame-label">Loading…</p><span class="refresh-chip" id="refresh-state">—</span><div class="detail-row"><span>Measured speed</span><strong id="observed-speed">—</strong></div><div class="detail-row"><span>Plan reuse age</span><strong id="reuse-age">—</strong></div><div class="error-comparison"><span>3 s final displacement error</span><div><i class="small-dot orange"></i>FastRoverVLA<strong id="full-fde">—</strong></div><div><i class="small-dot gray"></i>No reuse correction<strong id="stale-fde">—</strong></div></div><p class="subtle">Identical processing at refresh. Only FastRoverVLA continues state correction during reuse.</p></aside></div><div class="timeline"><button aria-label="Play numerical replay" class="play-button" disabled="" id="play-button">▶</button><label class="sr-only" for="frame-slider">Replay window</label><input disabled="" id="frame-slider" max="1" min="0" type="range" value="0"/><output for="frame-slider" id="frame-counter">— / —</output></div><p class="figure-note">Local trajectories in metres. Recorded numerical replay, not a vehicle simulation.</p><p class="error-message" id="replay-error" hidden role="status"></p></div></details>
   </section>
 
-  <section class="release-section" id="release"><div class="section-width section-space release-grid"><div><p class="eyebrow">OPEN SOURCE</p><h2>Run the execution interface.</h2><p>Python implementation, full-precision configurations, and 1,286 released numerical replay windows.</p><p class="figure-note">The release includes the execution interface and selected numerical replay materials. The public manuscript link will be added when available.</p><div class="release-links"><a href="https://github.com/chang2tz/FastRoverVLA">GitHub repository ↗</a><a href="https://github.com/chang2tz/FastRoverVLA/blob/main/docs/reproduction.md">Reproduction guide ↗</a></div></div><div class="code-panel"><div class="code-top"><span>QUICK START</span><button class="copy-button" data-copy="install-code" aria-label="Copy installation commands">Copy</button></div><pre><code id="install-code">git clone https://github.com/chang2tz/FastRoverVLA.git
+  <section class="release-section" id="release"><div class="section-width section-space release-grid"><div><p class="eyebrow">OPEN SOURCE</p><h2>Run the execution interface.</h2><p>Python implementation, full-precision configurations, and 1,286 released numerical replay windows.</p><p class="figure-note">The release includes the execution interface and selected numerical replay materials. The public manuscript link will be added when available.</p><div class="release-links"><a href="https://github.com/ADEPT-ORG/FastRoverVLA">GitHub repository ↗</a><a href="https://github.com/ADEPT-ORG/FastRoverVLA/blob/main/docs/reproduction.md">Reproduction guide ↗</a></div></div><div class="code-panel"><div class="code-top"><span>QUICK START</span><button class="copy-button" data-copy="install-code" aria-label="Copy installation commands">Copy</button></div><pre><code id="install-code">git clone https://github.com/ADEPT-ORG/FastRoverVLA.git
 cd FastRoverVLA
 python -m pip install --no-deps -e .
 
@@ -108,10 +108,10 @@ python scripts/reproduce.py --verify</code></pre><p class="code-footer">Python 3
     Execution for Off-Road Autonomous Driving},
   year = {2026},
   version = {0.1.0},
-  url = {https://github.com/chang2tz/FastRoverVLA}
+  url = {https://github.com/ADEPT-ORG/FastRoverVLA}
 }</code></pre></div></section>
 </main>
-<footer class="site-footer section-width"><a class="wordmark" href="#top">FastRover<span>VLA</span></a><p>Off-road vision-language-action execution.</p><a href="https://github.com/chang2tz/FastRoverVLA/blob/main/THIRD_PARTY.md">Credits &amp; asset terms</a></footer>
+<footer class="site-footer section-width"><a class="wordmark" href="#top">FastRover<span>VLA</span></a><p>Off-road vision-language-action execution.</p><a href="https://github.com/ADEPT-ORG/FastRoverVLA/blob/main/THIRD_PARTY.md">Credits &amp; asset terms</a></footer>
 <dialog id="figure-dialog" aria-labelledby="dialog-caption"><button id="close-dialog" class="dialog-close" aria-label="Close enlarged figure">×</button><img id="dialog-image" alt=""><p id="dialog-caption"></p></dialog>
 <div id="copy-status" class="copy-status" role="status" aria-live="polite"></div>
 </body></html>

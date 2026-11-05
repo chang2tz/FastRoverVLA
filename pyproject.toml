@@ -14,8 +14,8 @@ dependencies = []
 classifiers = ["Programming Language :: Python :: 3", "Operating System :: OS Independent"]
 
 [project.urls]
-Homepage = "https://chang2tz.github.io/FastRoverVLA/"
-Repository = "https://github.com/chang2tz/FastRoverVLA"
+Homepage = "https://adept-org.github.io/FastRoverVLA/"
+Repository = "https://github.com/ADEPT-ORG/FastRoverVLA"
 
 [project.scripts]
 fastrovervla = "fastrovervla.cli:main"

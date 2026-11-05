@@ -1,16 +1,16 @@
 # GitHub and GitHub Pages
 
-Target repository: `chang2tz/FastRoverVLA`. Static site source: `docs/site/`.
+Target repository: `ADEPT-ORG/FastRoverVLA`. Static site source: `docs/site/`.
 The page has no build dependencies, analytics, external fonts or API keys.
 
 After authenticating GitHub CLI as `chang2tz`, run from the repository root:
 
 ```bash
 gh auth status
-gh repo create chang2tz/FastRoverVLA --public --source . --remote origin --push
-gh api --method POST repos/chang2tz/FastRoverVLA/pages -f build_type=workflow
-gh workflow run pages.yml --repo chang2tz/FastRoverVLA
-gh run list --repo chang2tz/FastRoverVLA --limit 5
+gh repo create ADEPT-ORG/FastRoverVLA --public --source . --remote origin --push
+gh api --method POST repos/ADEPT-ORG/FastRoverVLA/pages -f build_type=workflow
+gh workflow run pages.yml --repo ADEPT-ORG/FastRoverVLA
+gh run list --repo ADEPT-ORG/FastRoverVLA --limit 5
 ```
 
 If the repository already exists, inspect it before adding a remote or pushing. Never
@@ -18,7 +18,7 @@ force-push over existing work. If Pages already exists, use the repository's Pag
 settings to select **GitHub Actions** rather than repeating the creation request.
 
 The configured workflow publishes `docs/site` to
-`https://chang2tz.github.io/FastRoverVLA/`. It includes the permissions and deployment
+`https://adept-org.github.io/FastRoverVLA/`. It includes the permissions and deployment
 environment described in the [official GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
 
 Preview locally:

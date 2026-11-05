@@ -4,7 +4,7 @@ The execution core uses the Python standard library. Python 3.10 or newer on Lin
 macOS or Windows is sufficient for the demo, numerical replay and tests.
 
 ```bash
-git clone https://github.com/chang2tz/FastRoverVLA.git
+git clone https://github.com/ADEPT-ORG/FastRoverVLA.git
 cd FastRoverVLA
 python -m pip install --no-deps -e .
 python -m fastrovervla demo --steps 24

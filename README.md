@@ -6,7 +6,7 @@
 
 **Plan less. Stay in sync.**
 
-[Project Page](https://chang2tz.github.io/FastRoverVLA/) · [Quick Start](#quick-start) · [Method](docs/method.md) · [Reproduction](docs/reproduction.md) · [Citation](#citation)
+[Project Page](https://adept-org.github.io/FastRoverVLA/) · [Quick Start](#quick-start) · [Method](docs/method.md) · [Reproduction](docs/reproduction.md) · [Citation](#citation)
 
 ![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-35624a)
 ![Training free](https://img.shields.io/badge/Training-free-6b7e57)
@@ -51,7 +51,7 @@ inference runtime are not bundled. [Release and evaluation scope](docs/evaluatio
 The core and numerical reproduction require only Python 3.10+; no GPU is needed.
 
 ```bash
-git clone https://github.com/chang2tz/FastRoverVLA.git
+git clone https://github.com/ADEPT-ORG/FastRoverVLA.git
 cd FastRoverVLA
 python -m pip install --no-deps -e .
 
@@ -167,7 +167,7 @@ docs/site/           GitHub Pages source and manuscript figures
 
 ## Project page
 
-The permanent project-page URL is **https://chang2tz.github.io/FastRoverVLA/**.
+The permanent project-page URL is **https://adept-org.github.io/FastRoverVLA/**.
 It includes the manuscript's framework, result plots and camera–BEV visualizations,
 with full-resolution figures and an interactive numerical replay. See
 [links for the manuscript](docs/publication_links.md) for copy-ready LaTeX.
@@ -194,7 +194,7 @@ Please cite the software release until a public paper record is available:
     for Off-Road Autonomous Driving},
   year = {2026},
   version = {0.1.0},
-  url = {https://github.com/chang2tz/FastRoverVLA}
+  url = {https://github.com/ADEPT-ORG/FastRoverVLA}
 }
 ```
 

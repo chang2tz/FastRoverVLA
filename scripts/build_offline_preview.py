@@ -31,7 +31,7 @@ def main():
     # Source-PDF downloads are outgoing publication links, like the GitHub links.
     # Keep them usable when the preview HTML is opened outside the source tree.
     for pdf in set(re.findall(r'assets/[A-Za-z0-9_.-]+\.pdf', html)):
-        html = html.replace(pdf, 'https://chang2tz.github.io/FastRoverVLA/' + pdf)
+        html = html.replace(pdf, 'https://adept-org.github.io/FastRoverVLA/' + pdf)
     assets = set(re.findall(r'assets/[A-Za-z0-9_.-]+\.(?:png|webp|svg|woff2)(?:\?v=\d+)?', html))
     for ref in sorted(assets, key=len, reverse=True):
         path = urlsplit(ref).path

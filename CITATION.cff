@@ -4,8 +4,8 @@ type: software
 title: "FastRoverVLA: Fast Vision-Language-Action Execution for Off-Road Autonomous Driving"
 version: 0.1.0
 date-released: '2026-11-04'
-url: 'https://chang2tz.github.io/FastRoverVLA/'
-repository-code: 'https://github.com/chang2tz/FastRoverVLA'
+url: 'https://adept-org.github.io/FastRoverVLA/'
+repository-code: 'https://github.com/ADEPT-ORG/FastRoverVLA'
 license: MIT
 authors:
   - family-names: Zhao
